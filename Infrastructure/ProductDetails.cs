@@ -7,15 +7,20 @@
         It contains properties that map to data fields (like a database table)
 */
 {
+
     //Models
-    public class Product
+    public class ProductDetail
     {
+       public int Id { get; set; }
+
+        public string ManufacturerName { get; set; }
+
+        public string BatchCode { get; set; }
+
+
         public int ProductId { get; set; }
-        public string ProductName { get; set; }
-        public string ProductDescription { get; set; }
-        public decimal? Price { get; set; }
-        public int AvailableQty { get; set; }
-        public ProductDetail ProductDetail { get; set; } = default!; 
+        public Product product { get; set; }
+
     }
 }
 
@@ -29,10 +34,7 @@
  * 4.Price
  * 5.AvailableQty
  *
- *we need to both referance simulteniously in both tables to make the relationship work(PK  and RK)
- *
  *Product details
- *1.ID
  *2.ProductId
  *3.ManufacturerName
  *4.BatchCode

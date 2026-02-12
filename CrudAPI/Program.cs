@@ -1,6 +1,9 @@
 
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Services;
+using Services.Concete;
+using Services.Interfaces;
 
 namespace CrudAPI
 {
@@ -15,6 +18,8 @@ namespace CrudAPI
             builder.Services.AddControllers();  // This line is requried to run comtroller files as controller
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
+
+            builder.Services.AddTransient<IProductService, ProductService>(); // This line is used to register the service and interface for DI (Dependency Injection) in the API layer
 
             string connectionString = builder.Configuration.GetConnectionString("ConCrudApiDBContext"); // this line is used to get the connection string from appsettings.json file
 

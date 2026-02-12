@@ -13,6 +13,7 @@ namespace Infrastructure
         It contains properties that map to data fields (like a database table)
 */
 {
+    //Models
     public class Customer
     {
         public int Id { get; set; } // PROPERTIES by default ID is consider as primary key if we didnt menton it.
