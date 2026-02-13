@@ -1,9 +1,11 @@
-﻿using System;
+﻿using FluentValidation;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ViewModels.Request;
 
 namespace ViewModels.Request
 {
@@ -24,9 +26,24 @@ namespace ViewModels.Request
 /*
 *Product table Models
 * 1.ProductId
-* 
 * 2.productname
 * 3.Product description
 * 4.Price
 * 5.AvailableQty
 */
+
+public class AddProductRequestValidator : AbstractValidator<AddProductRequest>
+{
+    public AddProductRequestValidator()
+    {
+        RuleFor(product => product.ProductName)
+            .NotNull()
+            .Length(100)
+            .WithMessage("mx product lentg is 100");
+        RuleFor(product => product.productDescription)
+            .NotNull()
+            .Length(200)
+            .WithMessage("Product description should not be more then 200 char kindly reduce it");
+        
+    }
+}

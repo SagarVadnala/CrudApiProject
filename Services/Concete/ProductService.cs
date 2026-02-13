@@ -16,6 +16,22 @@ namespace Services.Concete
             _dbContext = crudApiDBContext;
         }
 
+        public async Task<bool> DeleteProductbyId(int productId)
+        {
+            var itemToDelete = await _dbContext.Products.Where(p => p.ProductId == productId).FirstOrDefaultAsync();
+            // as we know we are going to delete onnly one record we can use FirstOrDefault() and where is used to delete multiple records
+            if (itemToDelete is not null)
+            {
+                _dbContext.Products.Remove(itemToDelete);
+                int affectedRows = await _dbContext.SaveChangesAsync(); 
+
+                return affectedRows > 0 ? true : false;
+            }
+            return false;
+
+
+        }
+
         public async Task<GetProductResponse> GetproductbyID(int productId)
         {
             //Include is used to add multiple tables data in single query response

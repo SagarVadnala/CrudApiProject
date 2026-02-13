@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ViewModels.Request;
 
 namespace CrudAPI.Controllers
 {
@@ -13,9 +14,19 @@ namespace CrudAPI.Controllers
             return Ok(GetAllEmployee());
         }
         [HttpPost(Name = "Fetch")]
-        public IActionResult PostEmployee()
+        public IActionResult PostEmployee([FromBody] AddEmployeeRequest addEmployeeRequest)
         {
-            return Ok("Post method called");
+            if(ModelState.IsValid)
+            {
+                return Created("", new
+                {
+                    Success = true
+
+                });
+            }
+            else return BadRequest(ModelState);
+
+           
         }
         [HttpPut(Name = "Fetch")]
         public IActionResult PutEmployee()

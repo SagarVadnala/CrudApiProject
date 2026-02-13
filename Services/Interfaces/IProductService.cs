@@ -12,5 +12,6 @@ namespace Services.Interfaces
     {
         Task<bool> InsertProductAsync(AddProductRequest addProductRequest);
         Task<GetProductResponse> GetproductbyID(int productId);
+        Task<bool> DeleteProductbyId(int productId);
     }
 }
