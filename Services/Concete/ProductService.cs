@@ -8,6 +8,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Services.Concete
 {
+
+    /*
+     * Authentication: Verifies the user 
+     * Authorization: Verifies the user permission to access the resource
+     * 
+     * Tokeen base authencation (JWT - json web token) check articals for more info
+     *           
+     *
+     */
     public class ProductService : IProductService
     {
         private readonly CrudApiDBContext _dbContext;

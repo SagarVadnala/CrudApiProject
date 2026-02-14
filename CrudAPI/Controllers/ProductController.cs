@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using ViewModels.Request;
 using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CrudAPI.Controllers
 {
@@ -14,6 +15,8 @@ namespace CrudAPI.Controllers
     [ApiController]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiVersion("1.0")]
+    [Authorize]
+
     public class ProductController : ControllerBase
     {
 

@@ -87,7 +87,7 @@ namespace Infrastructure.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("Infrastructure.ProductDetails", b =>
+            modelBuilder.Entity("Infrastructure.ProductDetail", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -114,20 +114,20 @@ namespace Infrastructure.Migrations
                     b.ToTable("ProductDetails");
                 });
 
-            modelBuilder.Entity("Infrastructure.ProductDetails", b =>
+            modelBuilder.Entity("Infrastructure.ProductDetail", b =>
                 {
-                    b.HasOne("Infrastructure.Product", "Product")
-                        .WithOne("ProductDetails")
-                        .HasForeignKey("Infrastructure.ProductDetails", "ProductId")
+                    b.HasOne("Infrastructure.Product", "product")
+                        .WithOne("ProductDetail")
+                        .HasForeignKey("Infrastructure.ProductDetail", "ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Product");
+                    b.Navigation("product");
                 });
 
             modelBuilder.Entity("Infrastructure.Product", b =>
                 {
-                    b.Navigation("ProductDetails")
+                    b.Navigation("ProductDetail")
                         .IsRequired();
                 });
 #pragma warning restore 612, 618
